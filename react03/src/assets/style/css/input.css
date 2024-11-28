@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.mp-padding-section {
+  @apply 3xl:px-0 px-5 mx-auto;
+}
+
+.mp-fullpage-section-pad {
+  @apply md:px-10 px-5;
+}

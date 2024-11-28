@@ -1,10 +1,9 @@
 import React from "react";
 
 const Pagination = ({ currentPage, totalProducts, pageSize, onPageChange }) => {
-  // Calculate the total number of pages
+  // Get hết data về rồi chia cho pagesize
   const totalPages = Math.ceil(totalProducts / pageSize);
 
-  // Function to handle page change
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {
       onPageChange(page);
