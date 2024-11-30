@@ -11,8 +11,6 @@ const ProductManagementPage = () => {
     try {
       const response = await getAll("/products");
       setProducts(response);
-      console.log(1);
-      console.log(response);
     } catch (error) {
       console.error("Error fetching products", error);
     } finally {

@@ -34,8 +34,7 @@ const HomePage = () => {
       });
 
       setProducts(response.data);
-      console.log(response.data);
-      setTotalProducts(response.data.length);
+      console.log(products.length);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching products:", error);
