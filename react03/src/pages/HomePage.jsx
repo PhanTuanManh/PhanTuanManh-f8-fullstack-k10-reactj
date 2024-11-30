@@ -7,6 +7,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { useDebounce } from "use-debounce";
 import Header from "../components/Header";
+import instance from "../axios";
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
@@ -24,19 +25,17 @@ const HomePage = () => {
     setError(null);
 
     try {
-      const response = await axios.get(
-        "https://dummyjson.com/products/search",
-        {
-          params: {
-            q: query,
-            skip,
-            limit,
-          },
-        }
-      );
+      const response = await instance.get("/products", {
+        params: {
+          q: query,
+          _start: skip,
+          _limit: limit,
+        },
+      });
 
-      setProducts(response.data.products);
-      setTotalProducts(response.data.total);
+      setProducts(response.data);
+      console.log(response.data);
+      setTotalProducts(response.data.length);
       setLoading(false);
     } catch (error) {
       console.error("Error fetching products:", error);

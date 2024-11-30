@@ -5,6 +5,7 @@ import DetailPage from "./pages/DetailPage";
 import LaptopPage from "./pages/LaptopPage";
 import DashBoardPage from "./pages/admin/DashBoardPage";
 import ProductManagementPage from "./pages/admin/ProductManagementPage";
+import ProductForm from "./pages/admin/ProductForm";
 const App = () => {
   return (
     <div>
@@ -15,7 +16,9 @@ const App = () => {
 
         {/* Admin */}
         <Route path="/admin" element={<DashBoardPage />}>
-          <Route path="/admin/product" element={<ProductManagementPage />} />
+          <Route path="/admin/products" element={<ProductManagementPage />} />
+          <Route path="/admin/products/add" element={<ProductForm />} />
+          <Route path="/admin/products/update/:id" element={<ProductForm />} />
         </Route>
       </Routes>
     </div>

@@ -7,12 +7,16 @@ const ProductList = ({ products }) => {
         <div key={product.id} className="border p-4 rounded-lg shadow-md">
           <div className="w-full mb-4 rounded">
             <Link to={`/details/${product.id}`}>
-              <img
-                // Nếu không có ảnh thì lấy ảnh bừa trên mạng
-                src={product.images[0] || "https://placehold.co/600x600"}
-                alt={product.name}
-                className="w-full aspect-square object-cover rounded"
-              />
+              {product.images.length < 0 ? (
+                <img src="" alt="" />
+              ) : (
+                <img
+                  // Nếu không có ảnh thì lấy ảnh bừa trên mạng
+                  src={product.images[0] || "https://placehold.co/600x600"}
+                  alt={product.name}
+                  className="w-full aspect-square object-cover rounded"
+                />
+              )}
             </Link>
           </div>
           <Link to={`/details/${product.id}`}>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
+import { getAll, remove } from "../../axios";
 
 const ProductManagementPage = () => {
   const [products, setProducts] = useState([]);
@@ -9,8 +9,10 @@ const ProductManagementPage = () => {
   const fetchProducts = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:3000/products");
-      setProducts(response.data);
+      const response = await getAll("/products");
+      setProducts(response);
+      console.log(1);
+      console.log(response);
     } catch (error) {
       console.error("Error fetching products", error);
     } finally {
@@ -20,7 +22,7 @@ const ProductManagementPage = () => {
 
   const handleDeleteProduct = async (id) => {
     try {
-      await axios.delete(`http://localhost:3000/products/${id}`);
+      await remove("/products", id);
       fetchProducts();
     } catch (error) {
       console.error("Error deleting product", error);
@@ -37,43 +39,63 @@ const ProductManagementPage = () => {
   };
 
   useEffect(() => {
+    console.log(111);
+
     fetchProducts();
   }, []);
 
   return (
     <div className="container mt-5">
-      <h1>Product Management</h1>
+      <h1 className="text-2xl py-2 mb-2 border-b">Product Management</h1>
 
       {loading ? (
         <p>Loading...</p>
       ) : (
-        <table className="table table-bordered">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Product Name</th>
-              <th>Price</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {products.map((product) => (
-              <tr key={product.id}>
-                <td>{product.id}</td>
-                <td>{product.title}</td>
-                <td>${product.price}</td>
-                <td>
-                  <button
-                    className="btn btn-danger"
-                    onClick={() => handleConfirmDelete(product)}
-                  >
-                    Delete
-                  </button>
-                </td>
+        <div>
+          <button
+            className="btn btn-primary my-2"
+            onClick={() => {
+              window.location.href = `/admin/products/add`;
+            }}
+          >
+            Add Product
+          </button>
+          <table className="table table-bordered">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Actions</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {products.map((product) => (
+                <tr key={product.id}>
+                  <td>{product.id}</td>
+                  <td>{product.title}</td>
+                  <td>{product.price}$</td>
+                  <td>{product.description}</td>
+                  <td className="flex gap-3 justify-center items-center">
+                    <i
+                      class="fa-regular fa-pen-to-square text-blue-500 cursor-pointer text-2xl"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        window.location.href = `/admin/products/update/${product.id}`;
+                      }}
+                    ></i>
+
+                    <i
+                      class="fa-solid fa-trash-can text-red-500 cursor-pointer text-2xl"
+                      onClick={() => handleConfirmDelete(product)}
+                    ></i>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );
