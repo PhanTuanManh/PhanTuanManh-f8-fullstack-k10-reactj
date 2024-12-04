@@ -19,6 +19,8 @@ const LoginPage = () => {
         password: data.password,
       });
       localStorage.setItem("accessToken", response.data.accessToken);
+      localStorage.setItem("user", JSON.stringify(response.data.use));
+      console.log(response.data.user);
       navigate("/");
     } catch (error) {
       setLoginError("Invalid credentials, please try again.");
@@ -26,8 +28,8 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="container">
-      <h2>Login</h2>
+    <div className="max-w-[500px] p-5 mx-auto mt-[100px] shadow-lg rounded-2xl">
+      <h2 className="text-center">Login</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
@@ -61,12 +63,17 @@ const LoginPage = () => {
 
         {loginError && <div className="text-danger">{loginError}</div>}
 
-        <button type="submit" className="btn btn-primary">
-          Login
-        </button>
-        <span>
-          Don't have an account? <Link to="/register">Signup</Link>
-        </span>
+        <div className="flex gap-4 items-center">
+          <button type="submit" className="btn btn-primary">
+            Login
+          </button>
+          <span>
+            Don't have an account?{" "}
+            <Link to="/register" className="underline">
+              Signup
+            </Link>
+          </span>
+        </div>
       </form>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const SignupPage = () => {
   const {
@@ -18,16 +19,15 @@ const SignupPage = () => {
         email: data.email,
         password: data.password,
       });
-
-      navigate("/login");
+      confirm("Register successfully") && navigate("/login");
     } catch (error) {
       setSignupError("An error occurred, please try again.");
     }
   };
 
   return (
-    <div className="container">
-      <h2>Signup</h2>
+    <div className="max-w-[500px] p-5 mx-auto mt-[100px] shadow-lg rounded-2xl">
+      <h2 className="text-center">Signup</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-3">
           <label htmlFor="email" className="form-label">
@@ -63,9 +63,17 @@ const SignupPage = () => {
 
         {signupError && <div className="text-danger">{signupError}</div>}
 
-        <button type="submit" className="btn btn-primary">
-          Sign Up
-        </button>
+        <div className="flex items-center gap-4">
+          <button type="submit" className="btn btn-primary">
+            Sign Up
+          </button>
+          <span>
+            Already have an account?{" "}
+            <Link to="/login" className="underline">
+              Login
+            </Link>
+          </span>
+        </div>
       </form>
     </div>
   );

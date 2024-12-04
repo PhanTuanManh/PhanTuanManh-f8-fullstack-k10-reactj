@@ -8,7 +8,7 @@ const Header = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
-
+    localStorage.removeItem("user");
     navigate("/");
   };
 
