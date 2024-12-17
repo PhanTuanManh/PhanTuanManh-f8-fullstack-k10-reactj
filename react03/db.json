@@ -1,4 +1,55 @@
 {
+  "users": [
+    {
+      "email": "hoangn@gmail.com",
+      "password": "$2a$10$.nxxqPOrk4wOdA8fvwGSQOwO8OSB.TJOdPj/HhqBj0n.oFtIY7pKW",
+      "id": 1
+    },
+    {
+      "email": "hoangnm@gmail.com",
+      "password": "$2a$10$ikckyiqezrqkuEFUb.CBvOVN0gTnbuSm0VTfXyyQK4nn6Y0dHXD/y",
+      "username": "hoangnm.ndm",
+      "id": 2
+    },
+    {
+      "email": "hoangnsddsdsm@gmail.com",
+      "password": "$2a$10$aoWX3BAf8LN0vmREKT3UCecmH2LxmjD9NzwKxkPQps6LH9lUZXFB2",
+      "username": "hoangnm.ndm",
+      "id": 3
+    },
+    {
+      "email": "manhdeptraivcl@gmail.com",
+      "password": "$2a$10$jl2g5R/Vo3pmOScBCtG0se16iDb7c/P.c3zEfdXmr1.KzY98hbe.m",
+      "firstname": "Manhdeptrai",
+      "id": 4
+    },
+    {
+      "email": "manhphan.0501@gmail.com",
+      "password": "$2a$10$9KNG5fgvGLoKhJXrvwbTPe2Xc6Si2.4uzm0voUitAFcX1CvsDgWIC",
+      "id": 5
+    },
+    {
+      "email": "phantuanmanh.0501@gmail.com",
+      "password": "$2a$10$3aVS2.IPq8VqR0nxfvwq.eopaYB8uuOj5ZfpKQtSR9ZJh9p3fCnw2",
+      "id": 6
+    },
+    {
+      "email": "f8@gmail.com",
+      "password": "$2a$10$k0sCwUDKTgTqeeJKRwLEVOfUXf3OVec0QQMerlEHYNoyZwfHhxHzy",
+      "id": 7
+    },
+    {
+      "email": "manhptbh00210@fpt.edu.vn",
+      "password": "$2a$10$K7Is8AckoCZ4OXvb6ftZOeECdj8NJrUNtD2Ys7W9IfMoF6h.UAG8i",
+      "id": 8
+    },
+    {
+      "email": "admin@gmail.com",
+      "password": "$2a$10$bxvPpp/hl9tce7Bvb8y8vucGiVQx1Vj0EWL2MfqfyWsVaciUTn3gq",
+      "id": 9,
+      "role": "admin"
+    }
+  ],
   "products": [
     {
       "id": 1,
@@ -1719,8 +1770,5 @@
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Kiwi/thumbnail.png"
     }
-  ],
-  "total": 194,
-  "skip": 0,
-  "limit": 30
+  ]
 }
